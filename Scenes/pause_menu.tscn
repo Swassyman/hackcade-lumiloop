@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2qsp0jqo3yw3"]
+
+[ext_resource type="FontFile" uid="uid://dwd6435rd8or5" path="res://Assets/Jersey10-Regular.ttf" id="1_emv3i"]
+[ext_resource type="Script" uid="uid://ehsw0hfymdf8" path="res://Scenes/pause_menu.gd" id="1_k0w1u"]
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_k0w1u")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1928.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 0.368627)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 704.0
+offset_top = 224.0
+offset_right = 1155.0
+offset_bottom = 760.0
+alignment = 1
+
+[node name="ResumeButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_emv3i")
+theme_override_font_sizes/font_size = 156
+text = "RESUME"
+
+[node name="RestartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_emv3i")
+theme_override_font_sizes/font_size = 156
+text = "RESTART"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_emv3i")
+theme_override_font_sizes/font_size = 156
+text = "QUIT"

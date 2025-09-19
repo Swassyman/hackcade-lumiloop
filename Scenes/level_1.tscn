@@ -320,7 +320,7 @@ Jump
 [node name="Player" parent="." instance=ExtResource("1_vk57k")]
 z_index = -1
 position = Vector2(273, 283)
-SPEED = 500.0
+SPEED = 600.0
 JUMP_VELOCITY = -1000.0
 
 [node name="DeathZone" type="Area2D" parent="."]

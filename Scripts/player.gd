@@ -24,6 +24,9 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	handle_warping()
 	
+	if Input.is_action_just_pressed("pause"):
+		$PauseMenu.toggle_pause()
+	
 func handle_input():
 	var horizontal_input = 0.0
 	if Input.is_action_pressed("move_left"):

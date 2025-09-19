@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://dtfq5saig53pa"]
+[gd_scene load_steps=37 format=3 uid="uid://dtfq5saig53pa"]
 
 [ext_resource type="Script" uid="uid://dwphq023csoy6" path="res://Scripts/player.gd" id="1_fkybt"]
 [ext_resource type="Texture2D" uid="uid://cwy4fvh6ygm67" path="res://Assets/Player/Idle.png" id="1_v0iea"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dtycipyq50s0p" path="res://Assets/Player/Run.png" id="2_6t5aa"]
 [ext_resource type="Texture2D" uid="uid://bih5pbogjca4h" path="res://Assets/Player/Walk.png" id="2_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://couwdq6niod8c" path="res://Assets/Player/Die.png" id="2_x3wgy"]
+[ext_resource type="PackedScene" uid="uid://b2qsp0jqo3yw3" path="res://Scenes/pause_menu.tscn" id="7_3smsa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bi64h"]
 atlas = ExtResource("2_x3wgy")
@@ -253,3 +254,11 @@ one_way_collision = true
 zoom = Vector2(0.355, 0.355)
 limit_left = -2705
 limit_top = -2000
+
+[node name="PauseMenu" parent="." instance=ExtResource("7_3smsa")]
+z_index = 5
+offset_left = -1464.38
+offset_top = -825.858
+offset_right = -1464.38
+offset_bottom = -825.858
+scale = Vector2(1.52, 1.52)
