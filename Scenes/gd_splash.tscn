@@ -1,0 +1,109 @@
+[gd_scene load_steps=9 format=3 uid="uid://bb1572n18fwoh"]
+
+[ext_resource type="Script" uid="uid://d4be6qnssr3yh" path="res://Scripts/gd_splash.gd" id="1_id8ta"]
+[ext_resource type="Texture2D" uid="uid://dcdc1obdl2lex" path="res://Assets/godot_logo_splash.png" id="2_x61tq"]
+[ext_resource type="Texture2D" uid="uid://i84gnkcf8ay7" path="res://Assets/logo.png" id="3_8cqkb"]
+[ext_resource type="FontFile" uid="uid://dwd6435rd8or5" path="res://Assets/Jersey10-Regular.ttf" id="4_nmu6b"]
+
+[sub_resource type="Animation" id="Animation_x61tq"]
+resource_name = "logo_fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Godot:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.366667, 1),
+"transitions": PackedFloat32Array(1, 2.82843, 0.287175),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.815686), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8cqkb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Godot:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_nmu6b"]
+resource_name = "studio_fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33, 1),
+"transitions": PackedFloat32Array(1, 2, 0.517632),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.74902), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nmu6b"]
+_data = {
+&"RESET": SubResource("Animation_8cqkb"),
+&"logo_fade": SubResource("Animation_x61tq"),
+&"studio_fade": SubResource("Animation_nmu6b")
+}
+
+[node name="GdSplash" type="Node2D"]
+script = ExtResource("1_id8ta")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1929.0
+offset_bottom = 1090.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="Godot" type="Sprite2D" parent="."]
+position = Vector2(964, 541)
+scale = Vector2(1.67361, 1.6821)
+texture = ExtResource("2_x61tq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_nmu6b")
+}
+autoplay = "logo_fade"
+
+[node name="Node" type="Node2D" parent="."]
+visible = false
+
+[node name="Studio" type="Sprite2D" parent="Node"]
+position = Vector2(942, 395)
+scale = Vector2(0.447222, 0.474074)
+texture = ExtResource("3_8cqkb")
+
+[node name="Studio Name" type="Label" parent="Node"]
+offset_left = 710.0
+offset_top = 747.0
+offset_right = 1189.0
+offset_bottom = 841.0
+theme_override_fonts/font = ExtResource("4_nmu6b")
+theme_override_font_sizes/font_size = 86
+text = "IDK WHY STUDIOS"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
