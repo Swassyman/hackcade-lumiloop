@@ -56,8 +56,12 @@ func handle_warping():
 	elif global_position.y > warp_bounds.position.y + warp_bounds.size.y:
 		global_position.y = warp_bounds.position.y
 		
-func death():
+func death() -> void:
+	call_deferred("_reload_scene")
+
+func _reload_scene() -> void:
 	get_tree().reload_current_scene()
+
 
 
 func _on_death_zone_body_entered(body: Node2D) -> void:
@@ -68,3 +72,4 @@ func _on_death_zone_body_entered(body: Node2D) -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D:
 		get_tree().change_scene_to_file("res://Scenes/titlescreen.tscn")
+		

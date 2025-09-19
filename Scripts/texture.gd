@@ -9,7 +9,7 @@ var lock_pos: Vector2
 func _ready() -> void:
 	player = get_node("../Player")
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("lock"):
 		toggle_lock()
 		
