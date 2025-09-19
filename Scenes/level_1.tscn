@@ -1,0 +1,103 @@
+[gd_scene load_steps=7 format=4 uid="uid://bn4poxid4x8du"]
+
+[ext_resource type="PackedScene" uid="uid://dtfq5saig53pa" path="res://Scenes/player.tscn" id="1_vk57k"]
+[ext_resource type="Texture2D" uid="uid://bq55eorxy2aem" path="res://Assets/Tilemaps/Mossy - TileSet.png" id="2_8ffim"]
+[ext_resource type="Script" uid="uid://cammltpvfyw6" path="res://Scripts/texture.gd" id="3_xfk5q"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xfk5q"]
+texture = ExtResource("2_8ffim")
+texture_region_size = Vector2i(512, 512)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-156.921, -178.89, 256, -188.306, 256, 256, -160.06, 256)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, -188.306, 256, -188.306, 256, 256, -256, 256)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, -188.306, 153.783, -188.306, 160.06, 256, -256, 256)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-147.843, -155.625, 132.281, -155.625, 150.645, 256, -144.368, 256)
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-153.783, -256, 256, -256, 256, 256, -160.06, 256)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, -256, 256, -256, 256, 256, -256, 256)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, -256, 144.368, -256, 160.06, 256, -256, 256)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-147.506, -256, 125.537, -256, 150.645, 256, -144.368, 256)
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-131.814, -256, 256, -256, 256, 12.5537, 256, 81.5992, 34.5227, 100.43, -91.0144, 25.1074)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, -256, 256, -256, 256, 12.5537, 256, 81.5992, -256, 84.7376)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, -256, 144.368, -256, 138.091, -3.13843, 87.876, 78.4607, -256, 84.7376)
+3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-147.506, -256, 125.537, -256, 131.814, 31.3843, 6.27689, 100.43, -138.091, 28.2459)
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_7p6j4"]
+tile_size = Vector2i(512, 512)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_xfk5q")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_8ffim"]
+
+[node name="Level 1" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_vk57k")]
+position = Vector2(273, 283)
+SPEED = 450.0
+JUMP_VELOCITY = -900.0
+
+[node name="Tilemaps" type="Node" parent="."]
+
+[node name="Background" type="TileMapLayer" parent="Tilemaps"]
+
+[node name="Decorations" type="TileMapLayer" parent="Tilemaps"]
+
+[node name="Platforms" type="TileMapLayer" parent="Tilemaps"]
+scale = Vector2(0.856764, 1.19374)
+tile_map_data = PackedByteArray("AAAAAAEAAAAAAAAAAAABAAEAAAABAAAAAAACAAEAAAACAAAAAAAAAAIAAAAAAAEAAAABAAIAAAABAAEAAAACAAIAAAACAAEAAAAAAAMAAAAAAAIAAAABAAMAAAABAAIAAAACAAMAAAACAAIAAAAEAAEAAAADAAAAAAAEAAIAAAADAAEAAAAEAAMAAAADAAIAAAA=")
+tile_set = SubResource("TileSet_7p6j4")
+
+[node name="InnerCamera" type="TextureRect" parent="."]
+offset_left = -465.0
+offset_top = -282.0
+offset_right = 1062.0
+offset_bottom = 935.0
+texture = SubResource("CanvasTexture_8ffim")
+script = ExtResource("3_xfk5q")
