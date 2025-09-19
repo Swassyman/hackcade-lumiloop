@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://bn4poxid4x8du"]
+[gd_scene load_steps=22 format=4 uid="uid://bn4poxid4x8du"]
 
 [ext_resource type="PackedScene" uid="uid://dtfq5saig53pa" path="res://Scenes/player.tscn" id="1_vk57k"]
 [ext_resource type="Texture2D" uid="uid://baa67m4nwmbjl" path="res://Assets/boundary.png" id="2_7p6j4"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ea5lo4wjonnp" path="res://Assets/Tilemaps/Mossy - Decorations&Hazards.png" id="5_evi0p"]
 [ext_resource type="Texture2D" uid="uid://73e1ccfwttd7" path="res://Assets/bg.png" id="7_lsmp6"]
 [ext_resource type="Script" uid="uid://xmgsphixyekp" path="res://Scenes/parallax_background.gd" id="7_xrdnt"]
+[ext_resource type="Texture2D" uid="uid://b14ma3x4ta2ud" path="res://Assets/doorset.png" id="9_wrinw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_evi0p"]
 texture = ExtResource("4_6444e")
@@ -228,6 +229,31 @@ sources/0 = SubResource("TileSetAtlasSource_xfk5q")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7p6j4"]
 size = Vector2(29532.6, 713.419)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_chwpn"]
+atlas = ExtResource("9_wrinw")
+region = Rect2(0, 0, 60, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_af3po"]
+atlas = ExtResource("9_wrinw")
+region = Rect2(60, 0, 60, 92)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uy8f0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_chwpn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_af3po")
+}],
+"loop": false,
+"name": &"open",
+"speed": 1.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wrinw"]
+size = Vector2(34.0068, 56.6019)
+
 [node name="Level 1" type="Node2D"]
 
 [node name="InnerCamera" type="TextureRect" parent="."]
@@ -282,4 +308,19 @@ position = Vector2(2314, 500)
 scale = Vector2(6.35989, 6.53921)
 texture = ExtResource("7_lsmp6")
 
+[node name="Door" type="AnimatedSprite2D" parent="."]
+position = Vector2(52905, -119)
+scale = Vector2(5.665, 5.665)
+sprite_frames = SubResource("SpriteFrames_uy8f0")
+animation = &"open"
+frame = 1
+frame_progress = 1.0
+
+[node name="Area2D" type="Area2D" parent="Door"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door/Area2D"]
+position = Vector2(-3.05664, -0.233892)
+shape = SubResource("RectangleShape2D_wrinw")
+
 [connection signal="body_entered" from="DeathZone" to="Player" method="_on_death_zone_body_entered"]
+[connection signal="body_entered" from="Door/Area2D" to="Player" method="_on_area_2d_body_entered"]

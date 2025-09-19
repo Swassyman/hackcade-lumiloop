@@ -6,4 +6,4 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		$Node.visible = true
 		$AnimationPlayer.play("studio_fade")
 	elif anim_name == "studio_fade":
-		get_tree().change_scene_to_file("res://Scenes/level_1.tscn")
+		get_tree().change_scene_to_file("res://Scenes/titlescreen.tscn")
