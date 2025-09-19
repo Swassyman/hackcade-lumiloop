@@ -5,21 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://i84gnkcf8ay7" path="res://Assets/logo.png" id="3_8cqkb"]
 [ext_resource type="FontFile" uid="uid://dwd6435rd8or5" path="res://Assets/Jersey10-Regular.ttf" id="4_nmu6b"]
 
-[sub_resource type="Animation" id="Animation_x61tq"]
-resource_name = "logo_fade"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Godot:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.366667, 1),
-"transitions": PackedFloat32Array(1, 2.82843, 0.287175),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.815686), Color(1, 1, 1, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_8cqkb"]
 length = 0.001
 tracks/0/type = "value"
@@ -45,6 +30,21 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_x61tq"]
+resource_name = "logo_fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Godot:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.366667, 1),
+"transitions": PackedFloat32Array(1, 2.82843, 0.287175),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.815686), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_nmu6b"]

@@ -252,3 +252,4 @@ one_way_collision = true
 [node name="Camera" type="Camera2D" parent="."]
 zoom = Vector2(0.355, 0.355)
 limit_left = -2705
+limit_top = -2000
