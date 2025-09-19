@@ -35,7 +35,7 @@ func handle_input():
 	
 	if sprite:
 		if horizontal_input != 0:
-			sprite.play("walk")
+			sprite.play("run")
 			sprite.flip_h = horizontal_input < 0
 		else:
 			sprite.play("idle")
@@ -55,4 +55,11 @@ func handle_warping():
 		global_position.y = warp_bounds.position.y + warp_bounds.size.y
 	elif global_position.y > warp_bounds.position.y + warp_bounds.size.y:
 		global_position.y = warp_bounds.position.y
-	
+		
+func death():
+	get_tree().reload_current_scene()
+
+
+func _on_death_zone_body_entered(body: Node2D) -> void:
+	if body == self:
+		death()

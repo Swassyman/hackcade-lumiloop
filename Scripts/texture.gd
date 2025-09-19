@@ -3,8 +3,6 @@ extends TextureRect
 @export var cam_size: Vector2 = Vector2(256, 256)
 
 var player: CharacterBody2D
-var mask_rect: ColorRect
-
 var is_locked = false
 var lock_pos: Vector2
 
@@ -21,12 +19,6 @@ func _process(delta: float) -> void:
 		global_position = pivot_pos - size / 2
 	elif is_locked:
 		global_position = lock_pos
-		
-	if mask_rect:
-		var mat = mask_rect.material as ShaderMaterial
-		mat.set_shader_parameter("rect_pos", global_position)
-		mat.set_shader_parameter("rect_size", size)
-
 
 func toggle_lock():
 	is_locked = !is_locked
