@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://bn4poxid4x8du"]
+[gd_scene load_steps=24 format=4 uid="uid://bn4poxid4x8du"]
 
 [ext_resource type="PackedScene" uid="uid://dtfq5saig53pa" path="res://Scenes/player.tscn" id="1_vk57k"]
 [ext_resource type="Texture2D" uid="uid://baa67m4nwmbjl" path="res://Assets/boundary.png" id="2_7p6j4"]
@@ -6,10 +6,9 @@
 [ext_resource type="Script" uid="uid://cammltpvfyw6" path="res://Scripts/texture.gd" id="3_xfk5q"]
 [ext_resource type="Texture2D" uid="uid://gq6jmukim5q2" path="res://Assets/Tilemaps/Mossy - BackgroundDecoration.png" id="4_6444e"]
 [ext_resource type="Texture2D" uid="uid://ea5lo4wjonnp" path="res://Assets/Tilemaps/Mossy - Decorations&Hazards.png" id="5_evi0p"]
-[ext_resource type="Texture2D" uid="uid://73e1ccfwttd7" path="res://Assets/bg.png" id="7_lsmp6"]
-[ext_resource type="Script" uid="uid://xmgsphixyekp" path="res://Scenes/parallax_background.gd" id="7_xrdnt"]
 [ext_resource type="Texture2D" uid="uid://b14ma3x4ta2ud" path="res://Assets/doorset.png" id="9_wrinw"]
 [ext_resource type="AudioStream" uid="uid://bu7me7r2kty7q" path="res://Assets/Music/gamebg.wav" id="10_chwpn"]
+[ext_resource type="Texture2D" uid="uid://bsh6ic15me1kh" path="res://Assets/bg.jpg" id="10_uy8f0"]
 [ext_resource type="Texture2D" uid="uid://c7sa6o8vom1qi" path="res://Assets/sign.png" id="11_uy8f0"]
 [ext_resource type="FontFile" uid="uid://dwd6435rd8or5" path="res://Assets/Jersey10-Regular.ttf" id="12_6r07y"]
 
@@ -193,7 +192,7 @@ texture_region_size = Vector2i(512, 512)
 1:3/0 = 0
 1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, -169.475, 256, -160.06, 256, 178.89, -256, 172.614)
 2:3/0 = 0
-2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, -160.06, -78.4607, -147.506, -91.0144, 72.1839, -256, 100.43)
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, -160.06, -48.6457, -156.921, -73.7531, 87.876, -256, 100.43)
 3:3/0 = 0
 4:3/0 = 0
 5:3/0 = 0
@@ -332,16 +331,23 @@ position = Vector2(27242, 447)
 scale = Vector2(2.91, 2.91)
 shape = SubResource("RectangleShape2D_7p6j4")
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-script = ExtResource("7_xrdnt")
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2(128, 0)
-
-[node name="Bg" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+[node name="Bg" type="Sprite2D" parent="."]
+z_index = -5
 position = Vector2(2314, 500)
 scale = Vector2(6.35989, 6.53921)
-texture = ExtResource("7_lsmp6")
+texture = ExtResource("10_uy8f0")
+
+[node name="Bg2" type="Sprite2D" parent="."]
+z_index = -5
+position = Vector2(26736, 496)
+scale = Vector2(6.35989, 6.53921)
+texture = ExtResource("10_uy8f0")
+
+[node name="Bg3" type="Sprite2D" parent="."]
+z_index = -5
+position = Vector2(51152, 496)
+scale = Vector2(6.35989, 6.53921)
+texture = ExtResource("10_uy8f0")
 
 [node name="Door" type="AnimatedSprite2D" parent="."]
 position = Vector2(52905, -119)
