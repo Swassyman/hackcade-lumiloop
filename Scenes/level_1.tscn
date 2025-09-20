@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://bn4poxid4x8du"]
+[gd_scene load_steps=26 format=4 uid="uid://bn4poxid4x8du"]
 
 [ext_resource type="PackedScene" uid="uid://dtfq5saig53pa" path="res://Scenes/player.tscn" id="1_vk57k"]
 [ext_resource type="Texture2D" uid="uid://baa67m4nwmbjl" path="res://Assets/boundary.png" id="2_7p6j4"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://cammltpvfyw6" path="res://Scripts/texture.gd" id="3_xfk5q"]
 [ext_resource type="Texture2D" uid="uid://gq6jmukim5q2" path="res://Assets/Tilemaps/Mossy - BackgroundDecoration.png" id="4_6444e"]
 [ext_resource type="Texture2D" uid="uid://ea5lo4wjonnp" path="res://Assets/Tilemaps/Mossy - Decorations&Hazards.png" id="5_evi0p"]
+[ext_resource type="Texture2D" uid="uid://cx6v33tj17wwa" path="res://Assets/egg.png" id="8_uy8f0"]
 [ext_resource type="Texture2D" uid="uid://b14ma3x4ta2ud" path="res://Assets/doorset.png" id="9_wrinw"]
 [ext_resource type="AudioStream" uid="uid://bu7me7r2kty7q" path="res://Assets/Music/gamebg.wav" id="10_chwpn"]
 [ext_resource type="Texture2D" uid="uid://bsh6ic15me1kh" path="res://Assets/bg.jpg" id="10_uy8f0"]
@@ -254,6 +255,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wrinw"]
 size = Vector2(34.0068, 56.6019)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_af3po"]
+size = Vector2(19.8848, 70.609)
+
 [node name="Level 1" type="Node2D"]
 
 [node name="InnerCamera" type="TextureRect" parent="."]
@@ -296,7 +300,7 @@ offset_bottom = 17.913
 theme_override_fonts/font = ExtResource("12_6r07y")
 theme_override_font_sizes/font_size = 23
 text = "Press Shift to 
-Lock Camera
+Lock/Unlock Camera
 (X on a gamepad)"
 
 [node name="Lock Sign2" type="Sprite2D" parent="."]
@@ -316,6 +320,20 @@ text = "Press Space to
 Jump
 (A on a gamepad)"
 
+[node name="Egg" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(53480, -72)
+scale = Vector2(2.51, 2.51)
+texture = ExtResource("11_uy8f0")
+
+[node name="TextureRect" type="TextureRect" parent="Egg"]
+offset_left = -74.1147
+offset_top = -61.0354
+offset_right = 390.885
+offset_bottom = 410.965
+scale = Vector2(0.215582, 0.175439)
+texture = ExtResource("8_uy8f0")
+
 [node name="Player" parent="." instance=ExtResource("1_vk57k")]
 z_index = -1
 position = Vector2(273, 283)
@@ -333,7 +351,7 @@ shape = SubResource("RectangleShape2D_7p6j4")
 
 [node name="Bg" type="Sprite2D" parent="."]
 z_index = -5
-position = Vector2(2314, 500)
+position = Vector2(2296, 504)
 scale = Vector2(6.35989, 6.53921)
 texture = ExtResource("10_uy8f0")
 
@@ -345,8 +363,8 @@ texture = ExtResource("10_uy8f0")
 
 [node name="Bg3" type="Sprite2D" parent="."]
 z_index = -5
-position = Vector2(51152, 496)
-scale = Vector2(6.35989, 6.53921)
+position = Vector2(51176, 568)
+scale = Vector2(6.34113, 6.53921)
 texture = ExtResource("10_uy8f0")
 
 [node name="Door" type="AnimatedSprite2D" parent="."]
@@ -363,6 +381,12 @@ frame_progress = 1.0
 position = Vector2(-3.05664, -0.233892)
 shape = SubResource("RectangleShape2D_wrinw")
 
+[node name="Area2D2" type="Area2D" parent="Door"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door/Area2D2"]
+position = Vector2(-193.703, 2.64783)
+shape = SubResource("RectangleShape2D_af3po")
+
 [node name="BG Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_chwpn")
 autoplay = true
@@ -371,3 +395,4 @@ autoplay = true
 
 [connection signal="body_entered" from="DeathZone" to="Player" method="_on_death_zone_body_entered"]
 [connection signal="body_entered" from="Door/Area2D" to="Player" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Door/Area2D2" to="Player" method="_on_area_2d_2_body_entered"]
