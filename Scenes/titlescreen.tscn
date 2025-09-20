@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=3 uid="uid://cbp85vqipwb6i"]
+
+[ext_resource type="Texture2D" uid="uid://d2km7bsl767e8" path="res://Assets/title.jpeg" id="1_3lblr"]
+[ext_resource type="Script" uid="uid://djsxjmi10rkaq" path="res://Scenes/titlescreen.gd" id="1_h87bp"]
+[ext_resource type="Texture2D" uid="uid://olg7saewl13i" path="res://Assets/titlebg.jpeg" id="2_u4xby"]
+[ext_resource type="Theme" uid="uid://bhlvcjskvdv4s" path="res://Scenes/titlescreen.tres" id="4_qf0g6"]
+[ext_resource type="FontFile" uid="uid://dwd6435rd8or5" path="res://Assets/Jersey10-Regular.ttf" id="4_wshof"]
+[ext_resource type="AudioStream" uid="uid://4wtra0n5gt6a" path="res://Assets/Music/titlebd.wav" id="6_up5sg"]
+[ext_resource type="Script" uid="uid://pci8d8gs780b" path="res://Scenes/button.gd" id="6_w7bgp"]
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_h87bp")
+
+[node name="Title" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(944, 272)
+texture = ExtResource("1_3lblr")
+
+[node name="Titlebg" type="Sprite2D" parent="."]
+position = Vector2(960, 538.75)
+scale = Vector2(1.875, 1.84003)
+texture = ExtResource("2_u4xby")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+z_index = 3
+layout_direction = 1
+layout_mode = 0
+offset_left = 632.0
+offset_top = 528.0
+offset_right = 1312.0
+offset_bottom = 1088.0
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../QuitButton")
+focus_neighbor_bottom = NodePath("../QuitButton")
+focus_next = NodePath("../QuitButton")
+focus_previous = NodePath("../QuitButton")
+theme = ExtResource("4_qf0g6")
+theme_override_fonts/font = ExtResource("4_wshof")
+theme_override_font_sizes/font_size = 86
+text = "START"
+script = ExtResource("6_w7bgp")
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../StartButton")
+focus_neighbor_bottom = NodePath("../StartButton")
+focus_next = NodePath("../StartButton")
+focus_previous = NodePath("../StartButton")
+theme = ExtResource("4_qf0g6")
+theme_override_fonts/font = ExtResource("4_wshof")
+theme_override_font_sizes/font_size = 86
+text = "LEAVE"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_up5sg")
+autoplay = true
+
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

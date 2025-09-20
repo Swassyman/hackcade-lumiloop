@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <img width="3188" height="1202" alt="hackcade github banner v2" src="https://github.com/user-attachments/assets/0c4c3dcb-c5f7-46e7-965d-e4571edb09e9" />
 
 # [Game Name] 
@@ -58,3 +59,7 @@
 - **Playable Version / Download:** [Link to executable or archive]
 - **Deployed Web Version (if any):** [Link to web build]
 
+=======
+# Loopframe
+A 2D puzzle platformer where you can warp within your own camera.
+>>>>>>> lumiloop/main
